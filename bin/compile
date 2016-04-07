@@ -28,12 +28,12 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 # Static configurations for virtualenv caches.
-VIRTUALENV_LOC=".heroku/venv"
+VIRTUALENV_LOC="/app/.heroku/venv"
 LEGACY_TRIGGER="lib/python2.7"
 
 DEFAULT_PYTHON_VERSION="python-2.7.11"
 DEFAULT_PYTHON_STACK="cedar-14"
-PYTHON_EXE="/app/.heroku/python/bin/python"
+PYTHON_EXE="/app/.heroku/python/bin/python".
 PIP_VERSION="8.1.1"
 SETUPTOOLS_VERSION="20.4"
 
@@ -168,17 +168,17 @@ bpwatch stop clear_old_venvs
 bpwatch start restore_cache
     mkdir -p .heroku
 
-    cp -R $CACHE_DIR/.heroku/python .heroku/ &> /dev/null || true
-    cp -R $CACHE_DIR/.heroku/python-stack .heroku/ &> /dev/null || true
-    cp -R $CACHE_DIR/.heroku/python-version .heroku/ &> /dev/null || true
-    cp -R $CACHE_DIR/.heroku/vendor .heroku/ &> /dev/null || true
-    cp -R $CACHE_DIR/.heroku/venv .heroku/ &> /dev/null || true
+    cp -R $CACHE_DIR/.heroku/python /app/.heroku/ &> /dev/null || true
+    cp -R $CACHE_DIR/.heroku/python-stack /app/.heroku/ &> /dev/null || true
+    cp -R $CACHE_DIR/.heroku/python-version /app/.heroku/ &> /dev/null || true
+    cp -R $CACHE_DIR/.heroku/vendor /app/.heroku/ &> /dev/null || true
+    cp -R $CACHE_DIR/.heroku/venv /app/.heroku/ &> /dev/null || true
 
 bpwatch stop restore_cache
 
 set +e
 # Create set-aside `.heroku` folder.
-mkdir .heroku &> /dev/null
+mkdir /app/.heroku &> /dev/null
 set -e
 
 mkdir -p $(dirname $PROFILE_PATH)
